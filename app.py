@@ -27,12 +27,12 @@ async def lifespan(_app: FastAPI) -> AsyncIterator[None]:
     yield
 
 
-app = FastAPI(lifespan=lifespan)
+app = FastAPI()
 
 
 @app.get("/")
-def hello() -> str:
-    return "Hello, Docker!"
+def home():
+    return {"message": "Hello, Docker!"}  # ✅ Proper JSON response
 
 
 @app.post("/heroes/")
